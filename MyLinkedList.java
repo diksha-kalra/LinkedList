@@ -68,7 +68,7 @@ public class MyLinkedList {
 		tempNode = tempNode.getNext();
 		return tempNode;
 	}
-	
+
 	public INode search(Integer key) {
 		INode tempNode = this.head;
 		INode found = null;
@@ -79,5 +79,16 @@ public class MyLinkedList {
 			tempNode = tempNode.getNext();
 		}
 		return found;
+	}
+
+	public void removeParticularNode(INode deleteNode) {
+		INode tempNode = this.head;
+		INode prev = null;
+		while (tempNode != null && tempNode.getKey() != deleteNode.getKey()) {
+			prev = tempNode;
+			tempNode = tempNode.getNext();
+		}
+		prev.setNext(tempNode.getNext());
+		tempNode.setNext(null);
 	}
 }

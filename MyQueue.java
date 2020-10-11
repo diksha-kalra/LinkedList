@@ -18,4 +18,8 @@ public class MyQueue<K extends Comparable<K>> {
 	public void printQueue() {
 		myLinkedList.printMyNode();
 	}
+
+	public INode<K> dequeue() {
+		return myLinkedList.pop();
+	}
 }

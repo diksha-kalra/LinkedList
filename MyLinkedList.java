@@ -1,22 +1,22 @@
 package com.cg.linkedlist;
 
 public class MyLinkedList<K extends Comparable<K>> {
-	public INode head;
-	public INode tail;
+	public INode<K> head;
+	public INode<K> tail;
 
 	public MyLinkedList() {
 		this.head = null;
 		this.tail = null;
 	}
 
-	public void add(INode newNode) {
+	public void add(INode<K> newNode) {
 		if (this.tail == null) {
 			this.tail = newNode;
 		}
 		if (this.head == null) {
 			this.head = newNode;
 		} else {
-			INode tempNode = this.head;
+			INode<K> tempNode = this.head;
 			this.head = newNode;
 			this.head.setNext(tempNode);
 		}
@@ -35,7 +35,7 @@ public class MyLinkedList<K extends Comparable<K>> {
 		System.out.println(myNodes);
 	}
 
-	public void append(INode myNode) {
+	public void append(INode<K> myNode) {
 		if (this.tail == null) {
 			this.tail = myNode;
 		}
@@ -47,20 +47,20 @@ public class MyLinkedList<K extends Comparable<K>> {
 		}
 	}
 
-	public void insert(INode myNode, INode newNode) {
+	public void insert(INode<K> myNode, INode<K> newNode) {
 		INode tempNode = myNode.getNext();
 		myNode.setNext(newNode);
 		newNode.setNext(tempNode);
 	}
 
-	public INode pop() {
+	public INode<K> pop() {
 		INode tempNode = this.head;
 		this.head = head.getNext();
 		return tempNode;
 
 	}
 
-	public INode popLast() {
+	public INode<K> popLast() {
 		INode tempNode = this.head;
 		while (!tempNode.getNext().equals(tail)) {
 			tempNode = tempNode.getNext();
@@ -70,7 +70,7 @@ public class MyLinkedList<K extends Comparable<K>> {
 		return tempNode;
 	}
 
-	public INode search(Integer key) {
+	public INode<K> search(Integer key) {
 		INode tempNode = this.head;
 		INode found = null;
 		while (tempNode != null && tempNode.getNext() != null) {
@@ -82,7 +82,7 @@ public class MyLinkedList<K extends Comparable<K>> {
 		return found;
 	}
 
-	public void removeParticularNode(INode deleteNode) {
+	public void removeParticularNode(INode<K> deleteNode) {
 		INode tempNode = this.head;
 		INode prev = null;
 		while (tempNode != null && tempNode.getKey() != deleteNode.getKey()) {
@@ -113,7 +113,7 @@ public class MyLinkedList<K extends Comparable<K>> {
 	}
 
 	public <K extends Comparable<K>> void sortList() {
-		INode<K> current = this.head;
+		INode<K> current =(INode<K>) this.head;
 		INode<K> index = null;
 		K temp;
 		if (this.head == null)

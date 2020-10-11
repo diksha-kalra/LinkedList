@@ -2,14 +2,14 @@ package com.cg.linkedlist;
 
 public class MyNode<K> implements INode<K> {
 	private K key;
-	private INode next;
+	private INode<K> next;
 
 	public MyNode(K key) {
 		this.key = key;
 		this.next = null;
 	}
 
-	public INode getNext() {
+	public INode<K> getNext() {
 		return next;
 	}
 

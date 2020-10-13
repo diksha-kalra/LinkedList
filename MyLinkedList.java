@@ -1,6 +1,6 @@
 package com.cg.linkedlist;
 
-public class MyLinkedList<K extends Comparable<K>> {
+public class MyLinkedList<K> { // extends Comparable<K>> {
 	public INode<K> head;
 	public INode<K> tail;
 
@@ -33,6 +33,11 @@ public class MyLinkedList<K extends Comparable<K>> {
 		}
 		myNodes.append(tempNode.getKey());
 		System.out.println(myNodes);
+	}
+
+	@Override
+	public String toString() {
+		return "MyLinkedListNodes{" + head + "}";
 	}
 
 	public void append(INode<K> myNode) {
@@ -70,16 +75,16 @@ public class MyLinkedList<K extends Comparable<K>> {
 		return tempNode;
 	}
 
-	public INode<K> search(Integer key) {
-		INode tempNode = this.head;
-		INode found = null;
+	public INode<K> search(K key) {
+		INode tempNode = head;
 		while (tempNode != null && tempNode.getNext() != null) {
-			if (tempNode.getKey() == key) {
-				found = tempNode;
+			if (tempNode.getKey().equals(key)) {
+				return tempNode;
+			} else {
+				tempNode = tempNode.getNext();
 			}
-			tempNode = tempNode.getNext();
 		}
-		return found;
+		return null;
 	}
 
 	public void removeParticularNode(INode<K> deleteNode) {
@@ -113,7 +118,7 @@ public class MyLinkedList<K extends Comparable<K>> {
 	}
 
 	public <K extends Comparable<K>> void sortList() {
-		INode<K> current =(INode<K>) this.head;
+		INode<K> current = (INode<K>) this.head;
 		INode<K> index = null;
 		K temp;
 		if (this.head == null)

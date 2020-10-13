@@ -71,13 +71,12 @@ public class MyLinkedList {
 	
 	public INode search(Integer key) {
 		INode tempNode = this.head;
-		INode found = null;
 		while (tempNode != null && tempNode.getNext() != null) {
 			if (tempNode.getKey() == key) {
-				found = tempNode;
+				return tempNode;
 			}
 			tempNode = tempNode.getNext();
 		}
-		return found;
+		return null;
 	}
 }
